@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
     .navbar, .navbar-dark {
-        background-color: #e3e3e3;
+        background-color: #000;
     }
 
     .navbar-brand, .navbar-nav .nav-link {
-        color: #000;
+        color: grey;
 
         &:hover {
-            color: blue;
+            color: #efefef;
         }
     }
     
@@ -23,7 +23,7 @@ export const NavigationBar = () => (
 
     <Styles>
         <Navbar expand="lg">
-            <Navbar.Brand href="/">Covid Data Tool</Navbar.Brand>
+            <Navbar.Brand href="/">Covid Data Tool (CDT)</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id ="basic-navbar-nav">
                 <Nav className="ml-auto">
