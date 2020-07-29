@@ -3,19 +3,25 @@ import {Nav, Navbar} from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
-    .navbar, .navbar-dark {
+    .navbar, .navbar-light{
         background-color: #000;
     }
 
     .navbar-brand, .navbar-nav .nav-link {
-        color: grey;
+        color: #d4d4d4;
 
         &:hover {
-            color: #efefef;
+            color: #70afaf;
         }
     }
+
+    .navbar-toggler-icon{
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(212,212,212, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        
+        &:hover {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(125,175,175, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }  
     
-    .navbar-dark {
     }
 `;
 
