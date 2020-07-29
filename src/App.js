@@ -8,9 +8,7 @@ import {NoMatch} from './Pages/NoMatch';
 import {Layout} from './components/Layout';
 import {NavigationBar} from './components/NavigationBar';
 import {Jumbotron} from './components/Jumbotron';
-// import Dropzone from "react-dropzone";
-import {DropZone} from './components/DropZone'
-
+import {Footer} from './components/Footer'
 
 
 
@@ -19,7 +17,6 @@ function App() {
     <React.Fragment>
       <NavigationBar />
       <Jumbotron />
-      <DropZone/>
       <Layout>
         <Router>
           <Switch>
