@@ -1,5 +1,6 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
+import uploadimage from '../assets/upload.png'
 
 const baseStyle = {
   flex: 1,
@@ -9,13 +10,15 @@ const baseStyle = {
   padding: '20px',
   borderWidth: 2,
   borderRadius: 2,
+  background: 'url(${uploadimage}) no-repeat',
   borderColor: '#cfcfcf',
   borderStyle: 'dashed',
   backgroundColor: '#fafafa',
-  color: '#000',
+  color: '#a9a9a9',
   outline: 'none',
   transition: 'border .24s ease-in-out'
 };
+
 
 const activeStyle = {
   borderColor: 'yellow'
@@ -29,7 +32,9 @@ const rejectStyle = {
   borderColor: 'red'
 };
 
+//TODO Add image to upload space and store contents of file so that it can be sent to api/server for processing.
 function StyledDropzone(props) {
+    
   const {
     getRootProps,
     getInputProps,
@@ -37,6 +42,7 @@ function StyledDropzone(props) {
     isDragAccept,
     isDragReject
   } = useDropzone({accept: 'text/plain'});
+
 
   const style = useMemo(() => ({
     ...baseStyle,
@@ -53,7 +59,7 @@ function StyledDropzone(props) {
     <div className="container">
       <div {...getRootProps({style})}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop Nucleotide Sequences Here or Click to Browse</p>
+        <p>Drag 'n' drop Sequence Text (.txt) Files Here or Click to Browse</p>
       </div>
     </div>
   );
