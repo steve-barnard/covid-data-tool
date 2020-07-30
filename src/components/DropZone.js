@@ -9,7 +9,7 @@ const baseStyle = {
   padding: '20px',
   borderWidth: 2,
   borderRadius: 2,
-  borderColor: '#000',
+  borderColor: '#cfcfcf',
   borderStyle: 'dashed',
   backgroundColor: '#fafafa',
   color: '#000',
@@ -18,15 +18,15 @@ const baseStyle = {
 };
 
 const activeStyle = {
-  borderColor: '#2196f3'
+  borderColor: 'yellow'
 };
 
 const acceptStyle = {
-  borderColor: '#00e676'
+  borderColor: 'green'
 };
 
 const rejectStyle = {
-  borderColor: '#ff1744'
+  borderColor: 'red'
 };
 
 function StyledDropzone(props) {
@@ -36,7 +36,7 @@ function StyledDropzone(props) {
     isDragActive,
     isDragAccept,
     isDragReject
-  } = useDropzone({accept: 'txt/*'});
+  } = useDropzone({accept: 'text/plain'});
 
   const style = useMemo(() => ({
     ...baseStyle,
