@@ -1,4 +1,4 @@
-import React, {useMemo, useCallback} from 'react';
+import React, {useMemo, useCallback, useState} from 'react';
 import {useDropzone} from 'react-dropzone';
 import uploadimage from '../assets/upload.png'
 
@@ -34,6 +34,8 @@ const rejectStyle = {
 
 //TODO Add image to upload space and store contents of file so that it can be sent to api/server for processing.
 function StyledDropzone(props) {
+
+  const [files, setFiles] = useState([])
     
   const {
     getRootProps,
@@ -41,7 +43,23 @@ function StyledDropzone(props) {
     isDragActive,
     isDragAccept,
     isDragReject
-  } = useDropzone({accept: 'text/plain'});
+  } = useDropzone({ 
+    // maxFilesize: 2, //in Mb
+//     accept: function(file, done) {
+//         var reader = new FileReader();
+//         reader.addEventListener("loadend", function(event) { console.log(event.target.result);});
+//         reader.readAsText(file);
+//     }
+// };
+// accept: 'text/plain'
+    accept: 'text/plain',
+    onDrop: (acceptedFiles) => {
+      setFiles(
+      acceptedFiles.map((file) => Object.assign(file, {
+        preview: URL.createObjectURL(file)
+      })))
+    }
+  })
 
 
   const style = useMemo(() => ({
@@ -53,7 +71,14 @@ function StyledDropzone(props) {
     isDragActive,
     isDragReject,
     isDragAccept
-  ]);
+  ])
+
+  const filepreview = files.map((file) => (
+    <div key={file.name} >
+        <p>File Loaded:</p>
+        <p>{file.name}</p>
+    </div>
+  ))
 
   return (
     <div className="container">
@@ -61,6 +86,7 @@ function StyledDropzone(props) {
         <input {...getInputProps()} />
         <p>Drag 'n' drop Sequence Text (.txt) Files Here or Click to Browse</p>
       </div>
+      <div>{filepreview}</div>
     </div>
   );
 }
