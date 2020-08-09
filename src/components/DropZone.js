@@ -85,6 +85,7 @@ function StyledDropzone(props) {
       <div {...getRootProps({style})}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop Sequence Text (.txt) Files Here or Click to Browse</p>
+        <em>(Only *.txt and FASTA files will be accepted)</em>
       </div>
       <div>{filepreview}</div>
     </div>
