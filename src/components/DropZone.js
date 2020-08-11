@@ -58,8 +58,15 @@ function StyledDropzone(props) {
       acceptedFiles.map((file) => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })))
+    },
+    onDropAccepted: (file) => {
+      fetch(file)
+          .then(acceptedFiles => acceptedFiles.text())
+          .then(text => console.log(file.name))
     }
   })
+
+  
 
 
   const style = useMemo(() => ({
