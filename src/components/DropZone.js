@@ -60,9 +60,9 @@ function StyledDropzone(props) {
       })))
     },
     onDropAccepted: (file) => {
-      fetch(file)
-          .then(acceptedFiles => acceptedFiles.text())
-          .then(text => console.log(file.name))
+      fetch('localhost')
+          .then(response => response.text())
+          .then(text => console.log(text))
     }
   })
 
