@@ -80,6 +80,26 @@ function StyledDropzone(props) {
           console.log(binaryStr)
         }
         reader.readAsText(file)
+
+        async function getData(){
+          const response = await fetch('http://127.0.0.1:5000/', 
+          {method: 'GET', mode: 'cors'} );
+          const text = await response.text();
+          console.log(text);
+          console.log(text, 'Data received')
+          console.log("Test");
+        }
+
+          getData().then(response => {console.log("Done")})
+          .catch(function (error) {
+            console.log('Request failed', error)});
+        
+
+        // console.log('about to fetch');
+        // fetch( 'http://127.0.0.1:5000/', {method: 'GET', mode: 'no-cors'})
+        // .then(response => response.text())
+        // .then(data => console.log(data))
+        // .then(console.log('done'))
       })
       
     }, [])
