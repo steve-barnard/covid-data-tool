@@ -2,7 +2,7 @@
 <br>
 A full-stack data science and bioinformatics tool with the intent to assist in identifying similar strains of the virus and providing possible insight to researchers, civilian data scientists, and other interested parties.
 
-The intent is to provide a useful tool for the NIH and other parties to use this to gather insights into this deadly virus and to provide other links back to reputable sources of information.
+The intent is to provide a useful tool for the NIH and other parties to use this to gather insights into this deadly virus and to provide other links back to reputable sources of information regarding Covid-19 and it's subsequent mutation strains.
 
 ---
 
