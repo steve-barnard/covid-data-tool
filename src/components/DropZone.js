@@ -35,6 +35,21 @@ const rejectStyle = {
 //TODO Add image to upload space and store contents of file so that it can be sent to api/server for processing.
 function StyledDropzone(props) {
 
+  const onDrop = useCallback((acceptedFiles) => {
+    acceptedFiles.forEach((file) => {
+      const reader = new FileReader()
+
+      reader.onabort = () => console.log('file reading was aborted')
+      reader.onerror = () => console.log('file reading has failed')
+      reader.onload = () => {
+      // Do whatever you want with the file contents
+        const binaryStr = reader.result
+        console.log(binaryStr)
+      }
+      reader.readAsText(file)
+    })
+    
+  }, [])
   const [files, setFiles] = useState([])
     
   const {
@@ -44,7 +59,7 @@ function StyledDropzone(props) {
     isDragAccept,
     isDragReject
   } = useDropzone({ 
-    // maxFilesize: 2, //in Mb
+    maxFilesize: 8, //in Mb
 //     accept: function(file, done) {
 //         var reader = new FileReader();
 //         reader.addEventListener("loadend", function(event) { console.log(event.target.result);});
@@ -53,17 +68,22 @@ function StyledDropzone(props) {
 // };
 // accept: 'text/plain'
     accept: 'text/plain',
-    onDrop: (acceptedFiles) => {
-      setFiles(
-      acceptedFiles.map((file) => Object.assign(file, {
-        preview: URL.createObjectURL(file)
-      })))
-    },
-    onDropAccepted: (file) => {
-      fetch('localhost')
-          .then(response => response.text())
-          .then(text => console.log(text))
-    }
+    onDrop: useCallback((acceptedFiles) => {
+      acceptedFiles.forEach((file) => {
+        const reader = new FileReader()
+  
+        reader.onabort = () => console.log('file reading was aborted')
+        reader.onerror = () => console.log('file reading has failed')
+        reader.onload = () => {
+        // Do whatever you want with the file contents
+          const binaryStr = reader.result
+          console.log(binaryStr)
+        }
+        reader.readAsText(file)
+      })
+      
+    }, [])
+    
   })
 
   
@@ -80,21 +100,14 @@ function StyledDropzone(props) {
     isDragAccept
   ])
 
-  const filepreview = files.map((file) => (
-    <div key={file.name} >
-        <p>File Loaded:</p>
-        <p>{file.name}</p>
-    </div>
-  ))
 
   return (
     <div className="container">
       <div {...getRootProps({style})}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop Sequence Text (.txt) Files Here or Click to Browse</p>
-        <em>(Only *.txt and FASTA files will be accepted)</em>
+        <em>(Only *.txt files will be accepted)</em>
       </div>
-      <div>{filepreview}</div>
     </div>
   );
 }

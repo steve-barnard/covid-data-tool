@@ -1,9 +1,11 @@
 import React from 'react'
 import StyledDropzone from '../components/DropZone'
-// import Dropzone from 'react-dropzone'
+
+
 
 
 export const Home = () =>
+
     (
         <div className = "App">
            <h2>Home</h2>
